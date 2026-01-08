@@ -16,12 +16,11 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_USER: quarkushop
-          POSTGRES_PASSWORD: quarkushop
-          POSTGRES_DB: quarkushop_db
+          POSTGRES_USER: developer
+          POSTGRES_PASSWORD: p4SSW0rd
+          POSTGRES_DB: demo
         ports:
           - 5432:5432
-        # Wait for postgres to be ready before starting the build
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -41,6 +40,6 @@ jobs:
         run: ./mvnw verify -B
         env:
           # Override Quarkus properties to point to the CI database
-          QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://localhost:5432/quarkushop_db
-          QUARKUS_DATASOURCE_USERNAME: quarkushop
-          QUARKUS_DATASOURCE_PASSWORD: quarkushop
+          QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://localhost:5432/demo
+          QUARKUS_DATASOURCE_USERNAME: developer
+          QUARKUS_DATASOURCE_PASSWORD: p4SSW0rd
