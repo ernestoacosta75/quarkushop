@@ -7,5 +7,5 @@ quarkus:
     jdbc:
       url: jdbc:postgresql://localhost:5432/demo
   # Flyway migration properties
-    flyway:
-        migrate-at-start: true
+  flyway:
+      migrate-at-start: true
