@@ -10,7 +10,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @MappedSuperclass
-//@EntityListeners(AuditingListener.class)
+@EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractEntity {
 
     @Id

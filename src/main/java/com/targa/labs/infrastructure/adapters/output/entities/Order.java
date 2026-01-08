@@ -1,6 +1,6 @@
 package com.targa.labs.infrastructure.adapters.output.entities;
 
-import com.targa.labs.domain.CartStatus;
+import com.targa.labs.domain.OrderStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -25,7 +25,7 @@ public class Order extends AbstractEntity {
     @NotNull
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
-    private final OrderStatus status;
+    private OrderStatus status;
 
     @Column(name = "shipped")
     private ZonedDateTime shipped;
