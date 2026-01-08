@@ -1,0 +1,88 @@
+@startuml
+class com.targa.labs.infrastructure.adapters.output.entities.Order {
+- BigDecimal price
+- OrderStatus status
+- ZonedDateTime shipped
+- Payment payment
+- Address shipmentAddress
+- Set<OrderItem> orderItems
+- Cart cart
+}
+
+class com.targa.labs.infrastructure.adapters.output.entities.Customer {
+- String firstName
+- String lastName
+- String email
+- String telephone
+- Set<Cart> carts
+- Boolean enabled
+}
+
+class com.targa.labs.infrastructure.adapters.output.entities.Address {
+- String address1
+- String address2
+- String city
+- String postCode
+- String country
+}
+
+class com.targa.labs.infrastructure.adapters.output.entities.Cart {
+- Customer customer
+- CartStatus status
+}
+
+class com.targa.labs.infrastructure.adapters.output.entities.Product {
+- String name
+- String description
+- BigDecimal price
+- ProductStatus paymentStatus
+- Integer salesCounter
+- Set<Review> reviews
+- Category category
+}
+
+class com.targa.labs.infrastructure.adapters.output.entities.Payment {
+- String paypalPaymentId
+- PaymentStatus paymentStatus
+- BigDecimal amount
+}
+
+class com.targa.labs.infrastructure.adapters.output.entities.Review {
+- String title
+- String description
+- Long rating
+}
+
+abstract class com.targa.labs.infrastructure.adapters.output.entities.AbstractEntity {
+- UUID id
+- Instant createdDate
+- Instant lastModifiedDate
+}
+
+class com.targa.labs.infrastructure.adapters.output.entities.OrderItem {
+- Long quantity
+- Product product
+- Order order
+}
+
+class com.targa.labs.infrastructure.adapters.output.entities.AuditingEntityListener {
+~ void preCreate(AbstractEntity)
+~ void preUpdate(AbstractEntity)
+}
+
+class com.targa.labs.infrastructure.adapters.output.entities.Category {
+- String name
+- String description
+}
+
+
+
+com.targa.labs.infrastructure.adapters.output.entities.AbstractEntity <|-- com.targa.labs.infrastructure.adapters.output.entities.Order
+com.targa.labs.infrastructure.adapters.output.entities.AbstractEntity <|-- com.targa.labs.infrastructure.adapters.output.entities.Customer
+com.targa.labs.infrastructure.adapters.output.entities.AbstractEntity <|-- com.targa.labs.infrastructure.adapters.output.entities.Cart
+com.targa.labs.infrastructure.adapters.output.entities.AbstractEntity <|-- com.targa.labs.infrastructure.adapters.output.entities.Product
+com.targa.labs.infrastructure.adapters.output.entities.AbstractEntity <|-- com.targa.labs.infrastructure.adapters.output.entities.Payment
+com.targa.labs.infrastructure.adapters.output.entities.AbstractEntity <|-- com.targa.labs.infrastructure.adapters.output.entities.Review
+com.targa.labs.infrastructure.adapters.output.entities.AbstractEntity <|-- com.targa.labs.infrastructure.adapters.output.entities.OrderItem
+com.targa.labs.infrastructure.adapters.output.entities.AbstractEntity <|-- com.targa.labs.infrastructure.adapters.output.entities.Category
+@enduml
